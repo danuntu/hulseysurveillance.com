@@ -135,6 +135,23 @@ a{color:var(--accent);text-decoration:none}
 
 /* default (desktop) remains as-is */
 
+@media (max-width: 640px){
+  .grid-3{ 
+    grid-template-columns: 1fr; 
+    gap: 14px;
+  }
+  .grid-3 .card{
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px){
+  .contact{
+    grid-template-columns: 1fr;   /* stacked rows */
+    row-gap: 16px;
+  }
+}
+
 /* Phone/tablet layout */
 @media (max-width: 640px){
   /* show tagline on mobile (small) */
