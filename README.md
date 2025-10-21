@@ -1,14 +1,9 @@
-# Hulsey Surveillance Solutions, LLC — Starter Site
+# HSS Site (Mobile-Optimized)
 
-This is a static site ready for GitHub Pages and later migration to your Ubuntu server.
+This package includes a mobile-friendly header with hamburger menu, gradient/shimmer branding, and responsive layout.
+Upload these files to your GitHub repository (root). Place your logo at `assets/logo.png`.
 
-## How to use
-1. Drop your logo file at `assets/logo.png` (PNG with transparent background works great).
-2. Edit `index.html` and `style.css` if you want to tweak text and colors.
-3. Push to GitHub and enable **Settings → Pages** (Deploy from branch).
-4. In Namecheap DNS, point `www` to your GitHub Pages and set A records for the root if desired.
-
-Contact info is set to:
-- Phone: (318) 312-1510
-- Email: hulsey.hss@gmail.com
-- Address: 1727 Sycamore St., Jena, LA 71342
+Files:
+- index.html
+- style.css
+- assets/favicon.svg
