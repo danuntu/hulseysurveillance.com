@@ -1,0 +1,140 @@
+/* Minimal, modern dark theme */
+:root{
+  --bg:#0b0b0b;
+  --panel:#121316;
+  --muted:#9aa3ad;
+  --text:#e9eef3;
+  --brand:#22c55e;   /* green */
+  --brand-2:#ef4444; /* red */
+  --accent:#60a5fa;  /* blue */
+  --card:#14161a;
+  --border:#1e2227;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.site-header{position:sticky;top:0;background:rgba(11,11,11,.9);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border);z-index:10}
+.site-header .container{display:flex;align-items:center;gap:24px;justify-content:space-between;padding:14px 20px}
+.logo-wrap{display:flex;align-items:center;gap:16px}
+.logo-wrap img{height:56px;width:auto}
+#logo-fallback{height:56px;width:auto;display:none}
+.brand .tagline{color:#ff6b6b;font-weight:700;letter-spacing:.2px}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:var(--text);opacity:.9}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;border:1px solid var(--border);background:var(--card)}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--brand);color:#0a0a0a;border-color:#0a0a0a;font-weight:700}
+.btn-secondary{border-color:var(--border)}
+.hero{padding:64px 0;background:radial-gradient(1200px 500px at 10% 10%,rgba(34,197,94,.15),transparent)}
+.hero h1{font-size: clamp(28px, 4vw, 44px);margin:0 0 12px}
+.hero p{max-width:780px;color:var(--muted);margin:0 0 24px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.section{padding:56px 0}
+.section.alt{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--border);padding:20px;border-radius:16px}
+.card h3{margin:0 0 8px}
+.contact{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
+.contact-details ul{list-style:none;padding:0;margin:0 0 12px}
+.contact-details li{margin:6px 0}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:#0f172a;border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px;color:#93c5fd}
+.contact-form{background:var(--panel);border:1px solid var(--border);padding:16px;border-radius:16px}
+.contact-form label{display:block;font-size:14px;margin:10px 0}
+.contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0d0f12;color:var(--text)}
+.contact-form .form-note{font-size:12px;color:var(--muted)}
+.site-footer{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);text-align:center}
+@media (max-width: 860px){
+  .grid-3{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .brand .tagline{display:none}
+}
+.logo-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-name .logo {
+  height: 60px;
+  width: auto;
+}
+
+.company-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0;
+  white-space: nowrap;
+  background-image:
+    linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.25)),
+    linear-gradient(to right, #21c950 0%, #21c950 77%, #60a5fa 100%);
+  background-size: 200% auto;          /* allows the shimmer to move */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 4px rgba(33,201,80,0.25);
+  transition: background-position 1s ease;
+}
+
+/* Subtle shimmer on hover */
+.company-name:hover {
+  background-position: right center;
+  animation: shimmer 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: left center;
+  }
+  100% {
+    background-position: right center;
+  }
+}
+
+@media (max-width: 600px) {
+  .company-name {
+    font-size: 1.3rem;
+  }
+}
+
+.tagline {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 4px;
+  background-image:
+    linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(0,0,0,0.35)),
+    linear-gradient(to right, #42ec80 0%, #60a5fa 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.9;
+  letter-spacing: 0.4px;
+  transition: background-position 1.5s ease;
+}
+
+/* soft shimmer similar to the name, slower and subtler */
+.tagline:hover {
+  background-position: right center;
+  animation: shimmer-tag 4s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer-tag {
+  0% {
+    background-position: left center;
+  }
+  100% {
+    background-position: right center;
+  }
+}
+
+@media (max-width: 600px) {
+  .tagline {
+    font-size: 0.9rem;
+  }
+}
+
