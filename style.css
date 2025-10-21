@@ -11,13 +11,13 @@
   --border:#1e2227;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
 a{color:var(--accent);text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
 /* Header */
-.site-header{position:sticky;top:0;background:rgba(11,11,11,.9);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border);z-index:10}
-.site-header .container{display:flex;align-items:center;gap:24px;justify-content:space-between;padding:14px 20px}
+.site-header{position:sticky;top:0;background:rgba(11,11,11,.9);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border);z-index:100}
+.site-header .container{display:flex;align-items:center;gap:24px;justify-content:space-between;padding:14px 20px;position:relative}
 .logo-name{display:flex;align-items:center;gap:12px}
 .logo-name .logo{height:56px;width:auto}
 .brand .tagline{color:#ff6b6b;font-weight:700;letter-spacing:.2px}
@@ -126,29 +126,60 @@ a{color:var(--accent);text-decoration:none}
 }
 
 @media (max-width: 860px){
-  .grid-3{ grid-template-columns:1fr; }
-  .contact{ grid-template-columns:1fr; }
+  .company-name{
+    white-space: normal;
+    overflow-wrap: anywhere;
+    max-width: 55vw;
+  }
 }
 
-@media (max-width: 640px){
-  .site-header .container{ gap:12px; }
-  .brand .tagline{ display:none; }
-  .logo-name .logo{ height:46px; }
-  .company-name { font-size: 1.3rem; }
+/* default (desktop) remains as-is */
 
-  .nav-toggle{ display:flex; }
+/* Phone/tablet layout */
+@media (max-width: 640px){
+  /* show tagline on mobile (small) */
+  .brand .tagline{
+    display: block;
+    font-size: 0.82rem;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* allow the name to wrap and not push things off-screen */
+  .logo-name { flex-wrap: wrap; }
+  .company-name{
+    white-space: normal;         /* allow wrapping */
+    overflow-wrap: anywhere;     /* break long words if needed */
+    line-height: 1.15;
+    max-width: 70vw;             /* keep it from colliding with the button */
+  }
+
+  /* put the hamburger in the top-right, always visible */
+  .nav-toggle{
+    display:flex;
+    position:absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 120;
+  }
+
+  /* slide-down menu anchored to the top-right; no off-canvas shift */
   .nav{
-    position:absolute; top:64px; right:12px; left:12px;
+    position:absolute;
+    top: 56px;
+    right: 12px;
+    left: auto;                  /* remove the old left:12px so it’s not too wide */
+    width: min(78vw, 300px);
     display:block;
     background:var(--panel);
     border:1px solid var(--border);
     border-radius:14px;
-    padding:8px; 
-    transform-origin: top;
+    padding:8px;
+    transform-origin: top right;
     transform: scaleY(0);
     opacity:0; pointer-events:none;
     transition: transform .18s ease, opacity .18s ease;
-    z-index:20;
+    z-index:110;
   }
   .nav.open{
     transform: scaleY(1);
@@ -162,9 +193,10 @@ a{color:var(--accent);text-decoration:none}
     text-align:center;
   }
 
-  .hero{ padding: 36px 0; }
-  .hero-cta{ gap:10px; }
+  /* tighten hero spacing a bit on phones */
+  .hero{ padding: 32px 0; }
 }
+
 
 @media (max-width: 480px){
   .contact-form input, .contact-form textarea { padding:12px; font-size:16px; }
