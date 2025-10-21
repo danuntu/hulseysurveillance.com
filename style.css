@@ -197,8 +197,39 @@ a{color:var(--accent);text-decoration:none}
   .hero{ padding: 32px 0; }
 }
 
-
 @media (max-width: 480px){
   .contact-form input, .contact-form textarea { padding:12px; font-size:16px; }
   .btn-primary, .btn { padding:12px 16px; }
+}
+
+/* Floating Call Button (mobile-only) */
+.call-fab{
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0));
+  display: none; /* hidden by default; shown on mobile below */
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #0a0a0a;
+  background-image:
+    linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(0,0,0,0.2)),
+    linear-gradient(90deg, #21c950 0%, #21c950 77%, #60a5fa 100%);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 0 1px rgba(30,34,39,0.6) inset;
+  z-index: 50; /* above mobile nav */
+  border: none;
+}
+.call-fab:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+.call-fab:active{
+  transform: translateY(0);
+}
+
+@media (max-width: 640px){
+  .call-fab{ display: inline-flex; }
 }
